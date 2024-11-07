@@ -1,0 +1,25 @@
+
+
+
+.App {
+    text-align: center;
+    padding: 20px;
+  }
+  
+
+  .starships {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+  }
+  
+
+  .card {
+    width: 200px; 
+    padding: 15px; 
+    margin: 10px; 
+    background-color: rgba(43, 214, 226, 0.392);
+    border-radius: 10px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.274)
+
+  }

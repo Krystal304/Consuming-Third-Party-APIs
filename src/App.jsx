@@ -1,27 +1,34 @@
+
+
 import { useState, useEffect } from 'react'
 
 
-import { Routes, Route } from 'react-router-dom'
+import StarshipCard from './components/StarshipCard'
 
-import HomePage from './pages/HomePage'
-
-
-import StarshipDetail from './pages/StarshipDetail'
-
-
+import { getAllStarships } from './services/sw-api'
 
 import './App.css'
 
-export default function App() {
+function App() {
+
+  //use state
+  const [starships, setStarships] = useState([]);
+
+  //use effect
+  useEffect(() => {
+    getAllStarships().then((data) => setStarships(data.results))
+  }, []);
 
   return (
     <div className="App">
-
-   <Routes>
-    <Route path="/" element={<HomePage />} />
-    <Route path="/starship/:id" element={<StarshipDetail />} />
-   </Routes>
-   </div>
-  )
+      <h1>Starships</h1>
+      <div className="starships">
+        {starships.map((starship) => (
+          <StarshipCard key={starship.name} starship={starship}/>
+        ))}
+      </div>
+    </div>
+  );
 }
 
+export default App
